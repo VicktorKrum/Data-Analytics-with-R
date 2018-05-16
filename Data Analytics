@@ -1,0 +1,185 @@
+R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Workspace loaded from ~/.RData]
+****
+> help("read.csv")
+> help("read.csv2")
+> metoo <- read.csv(file.choose(),header =TRUE)   #load the CSV Excel file in the Rstudio environment.
+> str(metoo)                                      #command to see the structure of the file
+'data.frame':	410463 obs. of  12 variables:
+ $ id              : Factor w/ 395774 levels "","-- said no one ever\"",..: 394563 394562 394561 394560 394559 394558 394557 394556 394555 394554 ...
+ $ insertdate      : Factor w/ 17266 levels "","-29"," \"Have sexual predators final?\"",..: 4248 4248 4248 4248 4248 4248 4248 4248 4248 4248 ...
+ $ twitterhandle   : Factor w/ 393886 levels ""," #Metoo Vs. #Notme",..: 75277 231793 251838 228705 102562 78944 358995 392476 155586 59057 ...
+ $ followers       : Factor w/ 26231 levels ""," etc. and *still* be eul?\"",..: 22938 25897 3019 7274 15959 12449 17918 6755 9914 4211 ...
+ $ hashtagsearched : Factor w/ 243 levels "","0","01-01-2015 00:00",..: 243 243 243 243 243 243 243 243 243 243 ...
+ $ tweetid         : Factor w/ 98 levels "","0","01-01-2015 00:00",..: 98 98 98 98 98 98 98 98 98 98 ...
+ $ dateoftweet     : Factor w/ 312431 levels "","0","01-02-2018 05:16",..: 195333 195333 195334 195335 195336 195337 195338 195339 195339 195340 ...
+ $ text            : Factor w/ 160719 levels "","--- #Balancetonporc, #Metoo : ne pas en rester l? ---\n\nEst-ce d?une loi dont nous avons vraiment besoin ?\n\n"| __truncated__,..: 106808 85021 73264 16180 84900 129131 95913 129085 7877 25259 ...
+ $ lastcontactdate : Factor w/ 3418 levels ""," ","   let?s hon? https://t.co/C1CBka6zhM",..: 3378 3378 3378 3378 3378 3378 3378 3378 3378 3378 ...
+ $ lasttimelinepull: Factor w/ 1143 levels ""," - Supreme Court? https://t.co/730Di6MRZ3",..: 936 936 936 936 936 936 936 936 936 936 ...
+ $ X               : Factor w/ 20 levels "","0","03-12-2017",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ X.1             : Factor w/ 2 levels "","14-12-2017": 1 1 1 1 1 1 1 1 1 1 ...
+> levels(metoo)
+NULL
+> dim(metoo)                     #to check the dimensions of the table/dataframe
+[1] 410463     12
+> class(metoo)                     #to check the format of the table in the R environment
+[1] "data.frame"
+> names(metoo)                    #to find the variable names on the header
+ [1] "id"               "insertdate"       "twitterhandle"    "followers"       
+ [5] "hashtagsearched"  "tweetid"          "dateoftweet"      "text"            
+ [9] "lastcontactdate"  "lasttimelinepull" "X"                "X.1"             
+> summary(metoo)                       #summary about whole data imported 
+                                                                        id        
+                                                                         :  5975  
+ ?? ??(MeToo)? ???? ???                                                  :  1082  
+ ??? ? ???? ??? ???. ?? ??? ??? ?? ??"                                   :  1082  
+ @itsgabrielleu explains how the voices of women of color within the #M?":   533  
+ #MeToo                                                                  :   282  
+ 2015? ?? ??? ??? ????? "?"? ??? ????? ????? ????? ??? ?? ????"          :   202  
+ (Other)                                                                 :401307  
+            insertdate                                           twitterhandle   
+                 :  9691                                                :  9824  
+ 01-01-2015 00:00:  6359   01-01-2015 00:00                             :  6620  
+ 16-11-2017 09:45:   116    etc.                                        :    63  
+ 16-11-2017 09:52:   112    au mouvement #Metoo https://t.co/gX5nhOtY5Q":    26  
+ 16-11-2017 09:40:   111    and some vulgar talk.                       :    17  
+ 16-11-2017 09:49:   111    its too diffic?"                            :    13  
+ (Other)         :393963   (Other)                                      :393900  
+   followers              hashtagsearched       tweetid           dateoftweet    
+        :  9857   metoo           :393850   9.43E+17: 25099             : 12686  
+ 0      :  7511                   :  9857   9.42E+17: 22232   08-12-2017:   370  
+ 1      :  3827   0               :  6355   9.39E+17: 19939   0         :   331  
+ 2      :  2473   01-01-2015 00:00:   161   9.31E+17: 17945   09-12-2017:   248  
+ 3      :  1865   29-01-2018 03:51:     2   9.52E+17: 16232   16-11-2017:   212  
+ 4      :  1562   01-02-2018 01:53:     1   9.55E+17: 15815   08-11-2017:   210  
+ (Other):383368   (Other)         :   237   (Other) :293201   (Other)   :396406  
+                                                                                                                                               text       
+                                                                                                                                                 : 16282  
+ RT @LeeannTweeden: I?ve decided it?s time to tell my story. #MeToo\nhttps://t.co/TqTgfvzkZg                                                     :  6073  
+ RT @Ayaka_m_y: ?????????????????????????????????????????????????????????????????????????????????\n???????????????????????????????????????????   :  4474  
+ RT @funder: The 16 women who accused Trump of sexual assault are telling their story in one video-please share this far &amp; wide. RT if you a?:  3630  
+ RT @cnnbrk: When I raise my hand                                                                                                                :  2739  
+ RT @funder: .@SpeakerRyan-Everyone who retweets this wants you to open up an investigation into the 20 sexual assault claims against Donald?    :  2393  
+ (Other)                                                                                                                                         :374872  
+                                                                                                       lastcontactdate  
+ 01-01-2015 00:00                                                                                              :375669  
+                                                                                                               : 22233  
+  I am aware of all the women who are still in silence." - Actress Viola Davis references the #MeToo movem?"   :  2739  
+  I am aware of all the women who are still in silence." - Actress Viola Davis references the #MeToo movement?":   578  
+  and when that new day finally dawns                                                                          :   279  
+  ?? ???                                                                                                       :   202  
+ (Other)                                                                                                       :  8763  
+                                                                 lasttimelinepull 
+ 01-01-2015 00:00                                                        :384173  
+                                                                         : 23207  
+  it will be because of a lot of magnificent women and s?"               :   275  
+  together with all the women in our business                            :   147  
+  no te mereces una bala". Uma Thurman rompe su silencio y se suma al #?":    77  
+  "il va y avoir des?"                                                   :    74  
+ (Other)                                                                 :  2510  
+          X                  X.1        
+           :410401             :410462  
+ 13-11-2017:    12   14-12-2017:     1  
+ 0         :    10                      
+ 29-11-2017:     8                      
+ 14-11-2017:     5                      
+ 18-12-2017:     4                      
+ (Other)   :    23                      
+
+
+
+
+
+> head(metoo,n=10)                 #the head/ first several data entries in the dataframe
+        id       insertdate   twitterhandle followers hashtagsearched  tweetid                    dateoftweet
+1  2365116 08-02-2018 16:38       comsatori      7216           metoo 9.62E+17 Thu Feb 08 22:36:52 +0000 2018
+2  2365115 08-02-2018 16:38     mchris4duke      9661           metoo 9.62E+17 Thu Feb 08 22:36:52 +0000 2018
+3  2365114 08-02-2018 16:38          munakk        10           metoo 9.62E+17 Thu Feb 08 22:37:00 +0000 2018
+4  2365113 08-02-2018 16:38     masayakondo      1487           metoo 9.62E+17 Thu Feb 08 22:37:02 +0000 2018
+5  2365112 08-02-2018 16:38         eddydur        33           metoo 9.62E+17 Thu Feb 08 22:37:11 +0000 2018
+6  2365111 08-02-2018 16:38       cruz_madi       246           metoo 9.62E+17 Thu Feb 08 22:37:15 +0000 2018
+7  2365110 08-02-2018 16:38          tlsg99      4155           metoo 9.62E+17 Thu Feb 08 22:37:25 +0000 2018
+8  2365109 08-02-2018 16:38 ZeroOption4Shef       141           metoo 9.62E+17 Thu Feb 08 22:37:27 +0000 2018
+9  2365108 08-02-2018 16:38        irishspy     19215           metoo 9.62E+17 Thu Feb 08 22:37:27 +0000 2018
+10 2365107 08-02-2018 16:38 CanadasMajority      1114           metoo 9.62E+17 Thu Feb 08 22:37:31 +0000 2018
+                                                                                                                                           text
+1  RT @IxAmandaDelgado: @Navegaciones @FelipeCalderon @comsatori Cuando esta se?ora habla es como leer los twits de Ivanka Trump con el HT #Me?
+2  RT @alexwitze: .@NSF will require institutions that receive grant funds to tell them if PIs, co-PIs or anyone on the grant is found to have?
+3  Listening to the awesome feminist scholar Cynthia Enloe speaking about the relationship between the #metoo movement? https://t.co/aeoOhchgwA
+4                                                          ???????????????????????????????????????????????????????????? https://t.co/gWAWGlKa36
+5  RT @AlbertoBernalLe: ?A ver, donde est?n todas las voceras colombianas del #MeToo? ?No van a decir nada ante esto? ?De verdad se van a qued?
+6      RT @sassysanborn: We cant romanticize the same things we rally against. We cant have it both ways. Theres No Room for Fifty Shades" in?"
+7  RT @DefendEvropa: #120dB is a new initiative by a group of German women who refuse to stay silent about migrant rape, violence and terroris?
+8  RT @sarnjitflora: Very proud to become a White Ribbon UK Champion and to be keeping my affiliation with White Ribbon AUS over here in the U?
+9                          #MeToo movement lawmaker investigated for sexual misconduct https://t.co/bTilUvoHOh |Female groping male #CApolitics
+10  @DianeMariePosts @kwralex @gmbutts #GeraldButts is #JustinTrudeau &amp; #Liberals &lt;CHIEF ADVISOR&gt; in #Canada? https://t.co/nazXlN7y1k
+    lastcontactdate lasttimelinepull X X.1
+1  01-01-2015 00:00 01-01-2015 00:00      
+2  01-01-2015 00:00 01-01-2015 00:00      
+3  01-01-2015 00:00 01-01-2015 00:00      
+4  01-01-2015 00:00 01-01-2015 00:00      
+5  01-01-2015 00:00 01-01-2015 00:00      
+6  01-01-2015 00:00 01-01-2015 00:00      
+7  01-01-2015 00:00 01-01-2015 00:00      
+8  01-01-2015 00:00 01-01-2015 00:00      
+9  01-01-2015 00:00 01-01-2015 00:00      
+10 01-01-2015 00:00 01-01-2015 00:00  
+
+
+
+> tweets <- subset(metoo,select = c("id","twitterhandle","followers"))   #subset the huge dataframe into a smaller table with important variable columns  
+“””Subsetting would help us to extract the relevant data from the huge data available and make the output look less messy and would make it easier for us to deal with the data.”””  
+> head(tweets,n=3)                   #head of the dataframe subset
+       id twitterhandle followers
+1 2365116     comsatori      7216
+2 2365115   mchris4duke      9661
+3 2365114        munakk        10
+
+
+
+> max(tweets$followers,na.rm=T)
+Error in Summary.factor(c(22938L, 25897L, 3019L, 7274L, 15959L, 12449L,  : 
+  ‘max’ not meaningful for factors         #inbuilt max function works on vectors only.
+> m <- as.numeric(tweets$followers)        #converting the factor type column into numeric
+> max(m,na.rm=T)                  #now, the max function works perfectly.
+[1] 26231
+> tweets$followers <- as.numeric(tweets$followers)
+> max(tweets$followers,na.rm=T)                  #sorting out the maximum number of followers for the twitterhandles present in the data
+[1] 26231
+> tweets(tweets$followers>26230)
+Error in tweets(tweets$followers > 26230) : 
+  could not find function "tweets"
+> tweets[tweets$followers>26230]
+Error in `[.data.frame`(tweets, tweets$followers > 26230) : 
+  undefined columns selected
+> tweets[tweets$followers>26230,]                    #extracting out the people enjoying maximum followers in the available data of 410462 twitterhandles.
+            id twitterhandle followers
+79488  2157200      Joypress     26231
+231317 1764302       rmack2x     26231
+
+
+> tweetext <- subset (metoo, select =c("id","twitterhandle", "followers", "text"))
+> tweetext[tweets$followers>26230,]        #extracting out the tweets of the people enjoying maximum followers in the available data of 410462 twitterhandles.
+
+
+            id twitterhandle followers
+79488  2157200      Joypress      9999
+231317 1764302       rmack2x      9999
+                                                                                                                                                 text
+79488   RT @rebel19: Here for it. \nPBS Announces Five-Part Series On #MeToo Movement Debuting February 2 ??TCA https://t.co/acM5LUtP4b via @deadline
+231317 RT @subschneider: The Trump Accusers I have heard so far:\n1. Ask for her phone number\n2. Saw me while wearing a robe\n3. Nudged me during a?
